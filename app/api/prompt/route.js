@@ -5,8 +5,7 @@ export const GET = async(req)=> {
     try {
         await connectToDb()
 
-
-        const prompts = await Prompt.find({}).populate('creator')
+        const prompts = await Prompt.find().populate('creator')
         return new Response(JSON.stringify(prompts), {status: 200})
     } catch (error) {
         return new Response('failed to fetch props', {status: 500})
